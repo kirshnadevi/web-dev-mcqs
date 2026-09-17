@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 MCQs Web Dev Test | Developed by Kirshna Devi</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; position: relative; overflow-x: hidden; }
+        
+        /* Background Watermark Signature */
+        .watermark { position: fixed; top: 45%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 3.5rem; font-weight: 900; color: rgba(255, 255, 255, 0.03); pointer-events: none; white-space: nowrap; user-select: none; z-index: 0; }
+        
+        .box { background: #1e293b; width: 100%; max-width: 600px; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); position: relative; z-index: 1; border: 1px solid #334155; }
+        
+        /* Developer Badge Style */
+        .dev-badge { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
+        
+        .header { display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+        .opts { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+        .opt-btn { background: #334155; color: white; border: 1px solid #475569; padding: 12px; border-radius: 6px; text-align: left; cursor: pointer; font-size: 15px; }
+        .opt-btn:hover { background: #0284c7; }
+        .opt-btn.selected { background: #0369a1; border-color: #38bdf8; font-weight: bold; }
+        .btn { background: #10b981; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .btn-sec { background: #64748b; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        /* Footer Signature Style */
+        .footer-sig { text-align: center; margin-top: 20px; font-size: 12px; color: #94a3b8; border-top: 1px dashed #334155; padding-top: 10px; }
+        .footer-sig span { color: #38bdf8; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- Background Watermark -->
+    <div class="watermark">CREATED BY KIRSHNA DEVI</div>
+
+    <div class="box">
+        <!-- Developer Badge -->
+        <div class="dev-badge">⚡ Authored by Kirshna Devi | ID: 2k22-ITUK-47</div>
+        
+        <div class="header">
+            <h3 id="qNum">Question 1/20</h3>
+            <div id="timer" style="font-weight: bold; color: #f59e0b;">15:00</div>
+        </div>
+        <div id="quiz">
+            <h4 id="qText" style="min-height: 40px; font-size: 17px;">Loading...</h4>
+            <div class="opts" id="opts"></div>
+            <div style="display:flex; justify-content:space-between;">
+                <button id="prev" onclick="move(-1)" class="btn btn-sec" disabled>Previous</button>
+                <button id="next" onclick="move(1)" class="btn">Next</button>
+            </div>
+        </div>
+        <div id="result" style="display:none; text-align:center;">
+            <h2>🎉 Assessment Completed!</h2>
+            <p style="margin: 15px 0; font-size: 18px;" id="score"></p>
+            <button onclick="location.reload()" class="btn">Restart Exam</button>
+        </div>
+
+        <!-- Footer Copyright Signature -->
+        <div class="footer-sig">
+            &copy; 2026 <span>Kirshna Devi</span>. All Rights Reserved. | Licensed Portal
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            { q: "1. What does HTML stand for?", opts: ["Hyper Text Markup Language", "High Text Machine Language", "Hyperlink Textual Mark", "Home Tool Markup"], ans: 0 },
+            { q: "2. Which tag defines an unordered list?", opts: ["&lt;ol&gt;", "&lt;ul&gt;", "&lt;li&gt;", "&lt;list&gt;"], ans: 1 },
+            { q: "3. What does CSS stand for?", opts: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Colorful Style Sheets"], ans: 1 },
+            { q: "4. Property to change text color in CSS?", opts: ["text-color", "font-color", "color", "background-color"], ans: 2 },
+            { q: "5. How to select ID 'header' in CSS?", opts: [".header", "#header", "header", "*header"], ans: 1 },
+            { q: "6. Which language adds interactivity?", opts: ["HTML", "CSS", "JavaScript", "SQL"], ans: 2 },
+            { q: "7. Alert box syntax in JavaScript?", opts: ["msg('Hi')", "alertBox('Hi')", "msgBox('Hi')", "alert('Hi')"], ans: 3 },
+            { q: "8. Function declaration syntax?", opts: ["function myFunc()", "function:myFunc()", "create myFunc()", "def myFunc()"], ans: 0 },
+            { q: "9. How to call a function?", opts: ["call myFunc()", "myFunc()", "run myFunc()", "call.myFunc()"], ans: 1 },
+            { q: "10. Assignment operator in JS?", opts: ["*", "=", "-", "x"], ans: 1 },
+            { q: "11. HTML tag for JS code?", opts: ["&lt;script&gt;", "&lt;javascript&gt;", "&lt;js&gt;", "&lt;code&gt;"], ans: 0 },
+            { q: "12. Make all &lt;p&gt; text bold in CSS?", opts: ["p {font-weight: bold;}", "p {text-size: bold;}", "&lt;p style='bold'&gt;", "p {style: bold;}"], ans: 0 },
+            { q: "13. Image alternate text attribute?", opts: ["title", "src", "alt", "longdesc"], ans: 2 },
+            { q: "14. IF statement syntax in JS?", opts: ["if i = 5 then", "if i == 5 then", "if (i == 5)", "if i = 5"], ans: 2 },
+            { q: "15. Array method to remove last item?", opts: ["pop()", "push()", "shift()", "unshift()"], ans: 0 },
+            { q: "16. DOM full form?", opts: ["Document Object Model", "Data Object Mode", "Digital Ordinance Model", "Desktop Object Map"], ans: 0 },
+            { q: "17. Internal spacing property in CSS?", opts: ["margin", "padding", "spacing", "border-spacing"], ans: 1 },
+            { q: "18. Single line comment in JS?", opts: ["&lt;!-- Comment --&gt;", "// Comment", "/* Comment */", "' Comment"], ans: 1 },
+            { q: "19. HTTP method to get data?", opts: ["POST", "PUT", "DELETE", "GET"], ans: 3 },
+            { q: "20. Largest heading in HTML?", opts: ["&lt;h6&gt;", "&lt;heading&gt;", "&lt;h1&gt;", "&lt;head&gt;"], ans: 2 }
+        ];
+
+        let idx = 0, answers = new Array(20).fill(null), time = 900;
+
+        setInterval(() => {
+            time--;
+            let m = Math.floor(time / 60), s = time % 60;
+            document.getElementById('timer').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+            if(time <= 0) finish();
+        }, 1000);
+
+        function render() {
+            document.getElementById('qNum').innerText = `Question ${idx + 1}/20`;
+            document.getElementById('qText').innerHTML = data[idx].q;
+            document.getElementById('opts').innerHTML = data[idx].opts.map((o, i) => 
+                `<button class="opt-btn ${answers[idx] === i ? 'selected' : ''}" onclick="ans(${i})">${o}</button>`
+            ).join('');
+            document.getElementById('prev').disabled = idx === 0;
+            document.getElementById('next').innerText = idx === 19 ? 'Submit' : 'Next';
+        }
+
+        function ans(i) { answers[idx] = i; render(); }
+        
+        function move(dir) {
+            if(idx === 19 && dir === 1) return finish();
+            idx += dir;
+            render();
+        }
+
+        function finish() {
+            let score = answers.reduce((acc, curr, i) => curr === data[i].ans ? acc + 1 : acc, 0);
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('score').innerText = `Score: ${score} / 20 (${Math.round(score/20*100)}%)`;
+        }
+
+        render();
+    </script>
+</body>
+</html>
